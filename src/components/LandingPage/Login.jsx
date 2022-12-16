@@ -1,19 +1,24 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { validateUserLoginInfo, handleUserLogin } from "./form-utils";
+import routes from "../../config/routes-config.js";
 import loginShadow from "../../assets/login-shadow.svg";
 import showPasswordLogo from "../../assets/show-password.svg";
 import hidePasswordLogo from "../../assets/hide-password.svg";
 
+
 const LoginForm = () => {
+  const navigate = useNavigate();
+
   const [showPassword, setShowPassword] = useState(false);
+
+  const [errors, setErrors] = useState({});
 
   const [userPayload, setUserPayload] = useState({
     username: "",
     password: "",
     role: "employee",
   });
-
-  const [errors, setErrors] = useState({});
 
   const onInputChange = (event) => {
     setUserPayload((previousState) => {
@@ -23,8 +28,6 @@ const LoginForm = () => {
 
   const handleUserRole = (role) => {
     setUserPayload({ username: "", password: "", role: role });
-
-    setErrors({});
   };
 
   const handleShowOrHidePassword = () => {
@@ -37,19 +40,19 @@ const LoginForm = () => {
     setErrors(validateUserLoginInfo(userPayload));
 
     if (Object.keys(validateUserLoginInfo(userPayload)).length === 0) {
+      const user = JSON.parse(JSON.stringify(userPayload));
+      delete user["role"];
+
       if (userPayload.role === "employee") {
         handleUserLogin(
-          routes.landingPage.studentLoginUrl,
-          userPayload,
+          routes.employee.login,
+          user,
+          navigate,
           setErrors
         );
-      } else if (userPayload.role === "admin") {
-        handleUserLogin(
-          routes.landingPage.teacherLoginUrl,
-          userPayload,
-          setErrors
-        );
-      } 
+      } else if (userPayload.role === "admin")  {
+        navigate("/admins");
+      }
     }
   };
 
@@ -64,9 +67,9 @@ const LoginForm = () => {
         <div className="max-w-[525px] mx-auto text-center bg-[#DCD6F7] rounded-lg relative top-20 overflow-hidden py-16 px-10 sm:px-12 md:px-[60px]">
           <div className="flex flex-row justify-between mb-6 md:mb-14">
             <button
-              onClick={() => handleUserRole("student")}
+              onClick={() => handleUserRole("employee")}
               className={`w-1/3 px-2 py-1 rounded-bl-2xl ${
-                userPayload.role === "student" ? "bg-[#ACA9BB]" : "bg-[#F4EEFF]"
+                userPayload.role === "employee" ? "bg-[#ACA9BB]" : "bg-[#F4EEFF]"
               } hover:bg-[#CBB4F6] active:bg-white focus:bg-[#ACA9BB] text-black text-xl font-regular`}
             >
               Employee
@@ -80,20 +83,23 @@ const LoginForm = () => {
               Admin
             </button>
           </div>
-          <form onSubmit={handleUserLoginSubmission}>
+          <form
+              onSubmit={handleUserLoginSubmission}
+              noValidate
+          >
             <div className="mb-10">
               <label
                 htmlFor="username"
                 className="inline-block w-full text-left mb-1"
               >
-                {userPayload.role === "student" ? "GR/PR No" : "Emp No"}
+                {userPayload.role === "employee" ? "Emp No" : "Admin Emp No"}
               </label>
               <input
                 type="text"
                 placeholder={
-                  userPayload.role === "student"
-                    ? "Enter your GR/PR No"
-                    : "Enter your Emp No"
+                  userPayload.role === "employee"
+                    ? "Enter your Emp No"
+                    : "Enter your Admin Emp No"
                 }
                 id="username"
                 name="username"

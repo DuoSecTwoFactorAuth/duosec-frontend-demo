@@ -4,7 +4,6 @@ import Footer from "./components/LandingPage/Footer.jsx";
 import LandingPage from "./pages/LandingPage.jsx";
 import Employees from "./pages/Employees.jsx";
 import Admins from "./pages/Admins.jsx";
-import "./App.css";
 
 function App() {
   return (
