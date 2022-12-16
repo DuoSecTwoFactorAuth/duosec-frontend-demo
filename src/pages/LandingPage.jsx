@@ -1,8 +1,7 @@
 import React from "react";
-import Navbar from "../../components/landing-page/Navbar";
-import Home from "../../components/landing-page/Home";
-import About from "../../components/landing-page/About";
-import Contact from "../../components/landing-page/Contact";
+import Navbar from "../components/LandingPage/Navbar.jsx";
+import Home from "../components/LandingPage/Home.jsx";
+import Contact from "../components/LandingPage/Contact.jsx";
 
 const LandingPage = () => {
   return (
@@ -10,9 +9,6 @@ const LandingPage = () => {
       <Navbar />
       <div id="home">
         <Home />
-      </div>
-      <div id="about">
-        <About />
       </div>
       <div id="contact">
         <Contact />

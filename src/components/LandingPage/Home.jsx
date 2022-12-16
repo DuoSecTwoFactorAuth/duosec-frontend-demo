@@ -1,9 +1,9 @@
 import React from "react";
-import LoginForm from "./login/Login";
+import LoginForm from "../../components/LandingPage/Login.jsx";
 
 const Home = () => {
   return (
-    <div className="flex flex-row justify-center items-center">
+    <div className="bg-red-500 flex flex-row justify-center items-center">
       <div className="w-1/2 flex flex-col items-center justify-around">
         <h1 className="text-6xl text-[#0F0F10] font-medium ml-[-9.25rem] mb-8">
           Project Hub

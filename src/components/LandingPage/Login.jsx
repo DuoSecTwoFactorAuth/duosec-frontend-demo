@@ -1,11 +1,8 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { LoginContext } from "../../../contexts/LoginContext";
-import routes from "../../../config/routes-config";
-import validateUserLoginInfo from "./validate-info";
-import loginShadow from "../../../assets/images/login/login-shadow.svg";
-import showPasswordLogo from "../../../assets/images/login/show-password.svg";
-import hidePasswordLogo from "../../../assets/images/login/hide-password.svg";
+import loginShadow from "../../assets/login-shadow.svg";
+import showPasswordLogo from "../../assets/show-password.svg";
+import hidePasswordLogo from "../../assets/hide-password.svg";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -13,12 +10,10 @@ const LoginForm = () => {
   const [userPayload, setUserPayload] = useState({
     username: "",
     password: "",
-    role: "student",
+    role: "employee",
   });
 
   const [errors, setErrors] = useState({});
-
-  const { handleUserLogin } = useContext(LoginContext);
 
   const onInputChange = (event) => {
     setUserPayload((previousState) => {
@@ -42,25 +37,19 @@ const LoginForm = () => {
     setErrors(validateUserLoginInfo(userPayload));
 
     if (Object.keys(validateUserLoginInfo(userPayload)).length === 0) {
-      if (userPayload.role === "student") {
+      if (userPayload.role === "employee") {
         handleUserLogin(
           routes.landingPage.studentLoginUrl,
           userPayload,
           setErrors
         );
-      } else if (userPayload.role === "teacher") {
+      } else if (userPayload.role === "admin") {
         handleUserLogin(
           routes.landingPage.teacherLoginUrl,
           userPayload,
           setErrors
         );
-      } else if (userPayload.role === "admin") {
-        handleUserLogin(
-          routes.landingPage.adminLoginUrl,
-          userPayload,
-          setErrors
-        );
-      }
+      } 
     }
   };
 
@@ -80,15 +69,7 @@ const LoginForm = () => {
                 userPayload.role === "student" ? "bg-[#ACA9BB]" : "bg-[#F4EEFF]"
               } hover:bg-[#CBB4F6] active:bg-white focus:bg-[#ACA9BB] text-black text-xl font-regular`}
             >
-              Student
-            </button>
-            <button
-              onClick={() => handleUserRole("teacher")}
-              className={`w-1/3 px-2 py-1 ${
-                userPayload.role === "teacher" ? "bg-[#ACA9BB]" : "bg-[#F4EEFF]"
-              } hover:bg-[#CBB4F6] active:bg-white focus:bg-[#ACA9BB] text-black text-xl font-regular`}
-            >
-              Teacher
+              Employee
             </button>
             <button
               onClick={() => handleUserRole("admin")}

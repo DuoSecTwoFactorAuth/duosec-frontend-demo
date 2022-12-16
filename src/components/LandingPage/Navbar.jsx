@@ -1,6 +1,6 @@
 import React from "react";
 import { Link as ScrollLink } from "react-scroll";
-import Logo from "../../assets/images/logo.svg";
+import logo from "../../assets/logo.svg";
 
 const Navbar = () => {
   return (
@@ -9,12 +9,12 @@ const Navbar = () => {
         <ScrollLink activeClass="active" to="home" spy={true} smooth={true}>
           <div className="flex items-center ml-12 cursor-pointer">
             <img
-              src={Logo}
+              src={logo}
               className="mr-1 h-6 sm:h-10"
               alt="ProjectHub Logo"
             />
             <span className="self-center text-3xl font-bold whitespace-nowrap text-white">
-              Project Hub
+              Employee Hub
             </span>
           </div>
         </ScrollLink>
@@ -62,18 +62,6 @@ const Navbar = () => {
               >
                 <span className="block border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 lg:ml-1 lg:mr-2 lg:px-6 lg:py-3 lg:text-white lg:hover:cursor-pointer lg:hover:bg-white lg:hover:text-[#5C5CC0] lg:hover:font-semibold lg:hover:rounded-md text-white text-xl md:hover:text-[#fcfcfc] md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
                   Home
-                </span>
-              </ScrollLink>
-            </li>
-            <li>
-              <ScrollLink
-                activeClass="active"
-                to="about"
-                spy={true}
-                smooth={true}
-              >
-                <span className="block border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 lg:ml-1 lg:mr-2 lg:px-6 lg:py-3 lg:text-white lg:hover:cursor-pointer lg:hover:bg-white lg:hover:text-[#5C5CC0] lg:hover:font-semibold lg:hover:rounded-md text-white text-xl md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
-                  About
                 </span>
               </ScrollLink>
             </li>
