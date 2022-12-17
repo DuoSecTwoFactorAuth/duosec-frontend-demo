@@ -1,7 +1,7 @@
 import React from "react";
 import LoginForm from "../../components/LandingPage/Login.jsx";
 
-const Home = () => {
+const Home = ({ employeeId, setEmployeeId, showOtpModal, setShowOtpModal }) => {
   return (
     <div className="flex flex-row justify-center items-center">
       <div className="w-1/2 flex flex-col items-center justify-around">
@@ -19,7 +19,7 @@ const Home = () => {
         </div>
       </div>
       <div className="w-1/2">
-        <LoginForm />
+        <LoginForm employeeId={employeeId} setEmployeeId={setEmployeeId} showOtpModal={showOtpModal} setShowOtpModal={setShowOtpModal} />
       </div>
     </div>
   );

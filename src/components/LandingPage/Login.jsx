@@ -6,8 +6,7 @@ import loginShadow from "../../assets/login-shadow.svg";
 import showPasswordLogo from "../../assets/show-password.svg";
 import hidePasswordLogo from "../../assets/hide-password.svg";
 
-
-const LoginForm = () => {
+const LoginForm = ({ employeeId, setEmployeeId, showOtpModal, setShowOtpModal }) => {
   const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
@@ -48,6 +47,8 @@ const LoginForm = () => {
           routes.employee.login,
           user,
           navigate,
+          setEmployeeId,
+          setShowOtpModal,
           setErrors
         );
       } else if (userPayload.role === "admin") {

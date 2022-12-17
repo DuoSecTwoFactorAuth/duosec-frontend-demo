@@ -1,6 +1,7 @@
 const routes = {
     employee: {
-        login: "/employee-login"
+        login: "/employee-login",
+        verifyOtp: "/verify-totp"
     },
     admin: {
         addEmployee :"/add-employee"

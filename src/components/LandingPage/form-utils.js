@@ -37,13 +37,14 @@ const validateUserLoginInfo = ({ username, password, role }) => {
     return errors;
 };
 
-const handleUserLogin = async(route, user, navigate, setErrors) => {
+const handleUserLogin = async(route, user, navigate, setEmployeeId, setShowOtpModal, setErrors) => {
     try {
         const res = await axiosInstance.post(route, user);
 
         if (res.status == 202) {
             const data = await res.data;
-            navigate("/employees");
+            setEmployeeId(user.username)
+            setShowOtpModal(true);
         }
     } catch (err) {
         if (err.response && err.response.status === 401) {
@@ -52,4 +53,16 @@ const handleUserLogin = async(route, user, navigate, setErrors) => {
     }
 }
 
-export { validateUserLoginInfo, handleUserLogin };
+const validateOtp = (values) => {
+    const errors = {};
+    
+    if (!values.totp) {
+        errors.totp = "Please enter an otp to validate"
+    } else if(values.totp.length < 6){
+        errors.totp = "Please enter a 6 digit otp to validate"
+    }
+
+    return errors;
+}
+
+export { validateUserLoginInfo, handleUserLogin, validateOtp };
