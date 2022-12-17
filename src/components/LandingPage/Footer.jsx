@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => {
   return (
     <footer className="w-full justify-center items-center bg-[#474554] text-center text-white lg:text-left">
-      <div className="text-white text-center p-10 text-xl">
+      <div className="text-white text-center p-6 text-lg">
         ©Copyright :
         <a
           className="text-white"
