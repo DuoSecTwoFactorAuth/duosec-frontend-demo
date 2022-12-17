@@ -14,7 +14,7 @@ const Navbar = () => {
               alt="ProjectHub Logo"
             />
             <span className="self-center text-3xl font-bold whitespace-nowrap text-white">
-              Employee Hub
+              A-Company
             </span>
           </div>
         </ScrollLink>

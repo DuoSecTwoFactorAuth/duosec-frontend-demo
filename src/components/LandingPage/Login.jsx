@@ -50,7 +50,7 @@ const LoginForm = () => {
           navigate,
           setErrors
         );
-      } else if (userPayload.role === "admin")  {
+      } else if (userPayload.role === "admin") {
         navigate("/admins");
       }
     }
@@ -68,24 +68,22 @@ const LoginForm = () => {
           <div className="flex flex-row justify-between mb-6 md:mb-14">
             <button
               onClick={() => handleUserRole("employee")}
-              className={`w-1/3 px-2 py-1 rounded-bl-2xl ${
-                userPayload.role === "employee" ? "bg-[#ACA9BB]" : "bg-[#F4EEFF]"
-              } hover:bg-[#CBB4F6] active:bg-white focus:bg-[#ACA9BB] text-black text-xl font-regular`}
+              className={`w-1/2 px-2 py-1 rounded-bl-2xl ${userPayload.role === "employee" ? "bg-[#ACA9BB]" : "bg-[#F4EEFF]"
+                } hover:bg-[#CBB4F6] active:bg-white focus:bg-[#ACA9BB] text-black text-xl font-regular`}
             >
               Employee
             </button>
             <button
               onClick={() => handleUserRole("admin")}
-              className={`w-1/3 px-2 py-1 rounded-br-2xl ${
-                userPayload.role === "admin" ? "bg-[#ACA9BB]" : "bg-[#F4EEFF]"
-              } hover:bg-[#CBB4F6] active:bg-white focus:bg-[#ACA9BB] text-black text-xl font-regular`}
+              className={`w-1/2 px-2 py-1 rounded-br-2xl ${userPayload.role === "admin" ? "bg-[#ACA9BB]" : "bg-[#F4EEFF]"
+                } hover:bg-[#CBB4F6] active:bg-white focus:bg-[#ACA9BB] text-black text-xl font-regular`}
             >
               Admin
             </button>
           </div>
           <form
-              onSubmit={handleUserLoginSubmission}
-              noValidate
+            onSubmit={handleUserLoginSubmission}
+            noValidate
           >
             <div className="mb-10">
               <label

@@ -16,7 +16,9 @@ const Admins = () => {
   return (
     <>
       <div className="flex flex-col h-screen justify-center items-center">
-        <div className="fixed top-0 w-screen h-28 bg-[#474554]"></div>
+        <div className="flex flex-row px-16 place-items-center fixed top-0 w-screen h-28 bg-[#474554] text-white">
+          Admin Home Page
+        </div>
 
         <button
           className="bg-[#D9D9D9] shadow hover:shadow-lg outline-none focus:outline-none mr-16 mb-6 ease-linear transition-all duration-150 rounded-full"
